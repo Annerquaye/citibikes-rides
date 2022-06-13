@@ -1,0 +1,135 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pmagtulis.github.io/assets/ppm.ico" />
+    <title>Citibike rides in New York</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Mapbox  -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet" />
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .footer {
+            padding: 8px;
+            margin-top: 12px;
+        }
+
+        .section {
+            padding: 3px;
+            margin-top: 12px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- main -->
+    <img src="data/citibike.jpg" width="100%">
+    <div class="head-container">
+        <p>Mapping Citi Bikes ridership in September 2020, September 2021 </p>
+    </div>
+    <div class="container">
+       <p><strong>By Richard A. Abbey</strong>
+            | June 13, 2022</p>
+            <br>
+        <p>The CitiBike provides comprehensive data on the usage of its bike share services across New York City. The
+            published <a href="https://s3.amazonaws.com/tripdata/index.html">data</a>
+            details rides' origins and destinations.</a> The anonymized data also provides details on users such as
+            their birth dates, subscription types etc.
+            In this particular project, data for September 2020 and September 2021 were processed for visualization.
+        </p>
+        <p>The visualization made use of data on the station names where the trips originated as well as where the trips
+            ended. The location of
+            these stations, provided in the data, was converted into GEOJSON using geopandas library in python. The
+            resultant map illustrates the popularity of a each Citi Bike Station.
+            A bigger circle indicates that the station had more trips either originating from it or terminating at it.
+        </p>
+        <p> The notebook containing the analysis for this visualization can be found be <a href="#">here</a></p>
+        </p>
+    </div>
+        <div class="columns">
+            <div class="column is-half-desktop is-full-mobile is-full-tablet">
+                <div id='map'>
+                    <div id='legend-title' class="legend-title">
+                        <div class="legend">
+                            <p>No. of start trips in 2020</p>
+                            <div><span style="background-color: #C4D6B0" class="text-span"></span>0-3,499</div>
+                            <div><span style="background-color: #FCDE9C" class="text-span"></span>3,500-6,999</div>
+                            <div><span style="background-color: #BA5624" class="text-span"></span>7,000-10,499</div>
+                            <div><span style="background-color:#845A6D" class="text-span"></span>10,500-13,999</div>
+                            <div><span style="background-color: #381D2A" class="text-span"></span>14,000^</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half-desktop is-full-mobile is-full-tablet">
+                <div id='map2'>
+                    <div id='legend-title' class="legend-title">
+                        <div class="legend">
+                            <p>No. of stop trips in 2020</p>
+                            <div><span style="background-color: #B0DAF1" class="text-span"></span>0-3,499</div>
+                            <div><span style="background-color: #8D91C7" class="text-span"></span>3,500-6,999</div>
+                            <div><span style="background-color: #6E75A8" class="text-span"></span>7,000-10,499</div>
+                            <div><span style="background-color: #845A6D" class="text-span"></span>10,500-13,999</div>
+                            <div><span style="background-color: #3E1929" class="text-span"></span>14,000^</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-half-desktop is-full-mobile is-full-tablet">
+                <div id='map3'>
+                    <div id='legend-title' class="legend-title">
+                        <div class="legend">
+                            <p>No. of start trips in 2021</p>
+                            <div><span style="background-color: #C4D6B0" class="text-span"></span>0-3,499</div>
+                            <div><span style="background-color: #FCDE9C" class="text-span"></span>3,500-6,999</div>
+                            <div><span style="background-color: #BA5624" class="text-span"></span>7,000-10,499</div>
+                            <div><span style="background-color:#845A6D" class="text-span"></span>10,500-13,999</div>
+                            <div><span style="background-color: #381D2A" class="text-span"></span>14,000^</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-half-desktop is-full-mobile is-full-tablet">
+                <div id='map4'>
+                    <div id='legend-title' class="legend-title">
+                        <div class="legend">
+                            <p>No. of stop trips in 2021</p>
+                            <div><span style="background-color: #B0DAF1" class="text-span"></span>0-3,499</div>
+                            <div><span style="background-color: #8D91C7" class="text-span"></span>3,500-6,999</div>
+                            <div><span style="background-color: #6E75A8" class="text-span"></span>7,000-10,499</div>
+                            <div><span style="background-color: #845A6D" class="text-span"></span>10,500-13,999</div>
+                            <div><span style="background-color: #3E1929" class="text-span"></span>14,000^</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type='text/javascript' src="map.js"></script>
+<!-- <div class="container column is-full-desktop is-full-mobile is-full-tablet"> -->
+<div class="block">
+    <p class="subtitle is-6">Data: Citi Bike</p>
+</div>
+</div>
+</div>
+
+
+</body>
